@@ -1,5 +1,6 @@
 
 import './App.css';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 
@@ -9,6 +10,7 @@ function App() {
     <Navbar about="Home" home="About"/>
     <div className="container my-3 myclass">
       <TextForm heading="Enter your text to analyze"/>
+      {/* <About/> */}
     </div>
     </>
   );
