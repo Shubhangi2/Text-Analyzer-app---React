@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function TextForm(aprops) {
+export default function TextForm(props) {
   const [text, setText] = useState("Enter text here");
   const handleUpClick = (event)=>{
     // console.log("you click on a button which says convert to uppercase");
@@ -40,10 +40,16 @@ export default function TextForm(aprops) {
 
   return (
     <>
-    <div className='container'>
-        <div className="mb-3">
-          <h3>{aprops.heading}</h3>
-          <textarea className="form-control"  value={text} onChange={handleOnChange} id="myTextArea" rows="10"></textarea>
+    <div className='container'  style = {{
+      color : props.mode === 'light' ? 'black' : 'white',
+      backgroundColor : props.mode === 'light' ? 'white' : '#00223c'
+    }}>
+        <div className="mb-3" >
+          <h3>{props.heading}</h3>
+          <textarea className="form-control"   value={text} onChange={handleOnChange} id="myTextArea" rows="10" style = {{
+              color : props.mode === 'light' ? 'black' : 'white',
+              backgroundColor : props.mode === 'light' ? 'white' : '#00223c'
+            }}></textarea>
         </div>
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase</button>
         <button className="btn btn-primary mx-1" onClick={toLoClick}>Convert to uppercase</button>

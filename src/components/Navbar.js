@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default function Navbar(props) {
+
+export default function Navbar(props) { 
+
   return (
-    <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
+    <nav className={`navbar navbar-${props.mode} navbar-expand-lg bg-${props.mode}`}>
     <div className="container-fluid">
       <a className="navbar-brand" href="/">TextUtils</a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,10 +20,11 @@ export default function Navbar(props) {
             <a className="nav-link" href="/">{props.home}</a>
           </li>
         </ul>
-        <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
+       
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+        <label class={`form-check-label text-${props.mode === 'light'?'dark':'light'} `} htmlFor="flexSwitchCheckDefault">Enable {props.mode==='light'?'dark':'Light'} mode</label>
       </div>
     </div>
   </nav>  )
@@ -38,6 +41,6 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  home : "sjHome",
-  about:"sjAbout",
+  home : "home",
+  about:"about",
 }
