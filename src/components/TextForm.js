@@ -6,6 +6,8 @@ export default function TextForm(props) {
     // console.log("you click on a button which says convert to uppercase");
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert('you clicked on covert uppercase button', 'success')
+
   }
 
 
@@ -13,6 +15,8 @@ export default function TextForm(props) {
     // console.log("You clicked on to lowercase.");
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert('you click on covert lower case button', 'success')
+
   }
 
   const handleOnChange = (event)=>{
@@ -30,12 +34,15 @@ export default function TextForm(props) {
 
     console.log(capLetter.join(' '));
     setText(capLetter.join(' '));
+    props.showAlert('you click on first letter uppercase button', 'success')
+
   }
 
   const speak = ()=>{
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
     window.speechSynthesis.speak(msg);
+    props.showAlert('you click on speak button', 'success')
   }
 
   return (
