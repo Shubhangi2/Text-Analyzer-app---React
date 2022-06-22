@@ -9,7 +9,7 @@ import Alert from './components/Alert';
 
 
 function App() {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState('dark');
   const [alert, setAlert] = useState(null);
 
   const showAlert = (msg, type)=>{
@@ -23,20 +23,23 @@ function App() {
     }, 1500);
   }
 
+  if(mode == 'dark'){
+    document.body.style.backgroundColor = "#00223c"
+      document.body.style.color = "white"
+  }else{
+    document.body.style.backgroundColor = "white"
+      document.body.style.color = "black" 
+  }
+
 
   const toggleMode = ()=>{
     if(mode === 'light'){
       setMode('dark');
-      document.body.style.backgroundColor = "#00223c"
-      document.body.style.color = "white"
       showAlert('Dark mode enabled', 'success')
       
     }else{
       setMode('light');
-      document.body.style.backgroundColor = "white"
-      document.body.style.color = "black" 
       showAlert('Light mode enabled', 'success')
-    
     }
   }
 
