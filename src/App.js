@@ -1,12 +1,16 @@
 
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, {useState} from 'react'
 import Alert from './components/Alert';
 
-
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('dark');
@@ -23,7 +27,7 @@ function App() {
     }, 1500);
   }
 
-  if(mode == 'dark'){
+  if(mode === 'dark'){
     document.body.style.backgroundColor = "#00223c"
       document.body.style.color = "white"
   }else{
@@ -47,14 +51,19 @@ function App() {
 
   return (
     <>
-  
+  <BrowserRouter>
     <Navbar mode = {mode} toggleMode= {toggleMode} showAlert = {showAlert}/>
     <Alert alert = {alert}/>
     <div className="container my-3 myclass">
-            <TextForm heading="Enter your text to analyze" mode = {mode} showAlert = {showAlert}/>
+    <Routes>
+        <Route path="/about" element={<About />}/>
+        <Route path="/" element={<TextForm heading="Enter your text to analyze" mode = {mode} showAlert = {showAlert}/>}/>
+    </Routes>
+        
+            {/* <TextForm heading="Enter your text to analyze" mode = {mode} showAlert = {showAlert}/> */}
             {/* <About/> */}  
     </div>
-   
+    </BrowserRouter>
     </>
   );
 }
