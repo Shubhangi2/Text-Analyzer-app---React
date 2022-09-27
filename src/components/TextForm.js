@@ -60,7 +60,7 @@ export default function TextForm(props) {
         </div>
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase</button>
         <button className="btn btn-primary mx-1" onClick={toLoClick}>Convert to uppercase</button>
-        <button className="btn btn-primary mx-1" onClick={toFUCase}>first letter uppercase</button>
+        <button className="btn btn-primary mx-1" onClick={toFUCase}>First letter uppercase</button>
         <button className="btn btn-primary mx-1" onClick={speak}>voice assistant</button>
       </div>
       <div className="container my-3">

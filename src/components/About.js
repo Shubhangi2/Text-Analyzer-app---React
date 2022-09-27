@@ -1,28 +1,12 @@
+import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers'
 import React, {useState} from 'react'
 
-export default function About() {
-    const [myStyle, setMyStyle] = useState({
-        color : "black",
-        backgroundColor : "white"
-    })
-
-    const [btnText, setbtnText] = useState("Enable Dark Mode")
-
-const toggleMode = ()=>{
-    if(myStyle.color === "white"){
-        setMyStyle({
-            color : "black",
-            backgroundColor : "white"
-        })
-        setbtnText("Enable Dark Mode")
-    }else{
-        setMyStyle({
-            color : "white",
-            backgroundColor : "black"
-        })
-        setbtnText("Enable Light Mode")
+export default function About(props) {
+    let myStyle = {
+        color : "black"
     }
-}
+
+
 
   return (
     <div>
@@ -65,9 +49,7 @@ const toggleMode = ()=>{
                 </div>
             </div>
 
-            <div>
-                <button className="btn btn-primary" onClick={toggleMode}>{btnText}</button>
-            </div>
+           
             </div>
     </div>
   )
