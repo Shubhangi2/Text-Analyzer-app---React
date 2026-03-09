@@ -1,78 +1,95 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
 export default function TextForm(props) {
   const [text, setText] = useState("Enter text here");
-  const handleUpClick = (event)=>{
+  const handleUpClick = (event) => {
     // console.log("you click on a button which says convert to uppercase");
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert('you clicked on covert uppercase button', 'success')
+    props.showAlert("you clicked on covert uppercase button", "success");
+  };
 
-  }
-
-
-  const toLoClick = ()=>{
+  const toLoClick = () => {
     // console.log("You clicked on to lowercase.");
     let newText = text.toLowerCase();
     setText(newText);
-    props.showAlert('you click on covert lower case button', 'success')
+    props.showAlert("you click on covert lower case button", "success");
+  };
 
-  }
-
-  const handleOnChange = (event)=>{
+  const handleOnChange = (event) => {
     // console.log("not it will be change");
     setText(event.target.value);
+  };
 
-  }
-
-  const toFUCase = () =>{
-    let words = text.split(' ');
+  const toFUCase = () => {
+    let words = text.split(" ");
     let capLetter = [];
-    words.forEach(element => {
-        capLetter.push(element[0].toUpperCase() + element.slice(1, element.length));
+    words.forEach((element) => {
+      capLetter.push(
+        element[0].toUpperCase() + element.slice(1, element.length),
+      );
     });
 
-    console.log(capLetter.join(' '));
-    setText(capLetter.join(' '));
-    props.showAlert('you click on first letter uppercase button', 'success')
+    console.log(capLetter.join(" "));
+    setText(capLetter.join(" "));
+    props.showAlert("you click on first letter uppercase button", "success");
+  };
 
-  }
-
-  const speak = ()=>{
+  const speak = () => {
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
     window.speechSynthesis.speak(msg);
-    props.showAlert('you click on speak button', 'success')
-  }
+    props.showAlert("you click on speak button", "success");
+  };
 
   return (
     <>
-    <div className='container'  style = {{
-      color : props.mode === 'light' ? 'black' : 'white',
-      backgroundColor : props.mode === 'light' ? 'white' : '#00223c'
-    }}>
-        <div className="mb-3" >
+      <div
+        className="container"
+        style={{
+          color: props.mode === "light" ? "black" : "white",
+          backgroundColor: props.mode === "light" ? "white" : "#00223c",
+        }}
+      >
+        <div className="mb-3">
           <h3>{props.heading}</h3>
-          <textarea className="form-control"   value={text} onChange={handleOnChange} id="myTextArea" rows="10" style = {{
-              color : props.mode === 'light' ? 'black' : 'white',
-              backgroundColor : props.mode === 'light' ? 'white' : '#00223c'
-            }}></textarea>
+          <textarea
+            className="form-control"
+            value={text}
+            onChange={handleOnChange}
+            id="myTextArea"
+            rows="10"
+            style={{
+              color: props.mode === "light" ? "black" : "white",
+              backgroundColor: props.mode === "light" ? "white" : "#00223c",
+            }}
+          ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase</button>
-        <button className="btn btn-primary mx-1" onClick={toLoClick}>Convert to uppercase</button>
-        <button className="btn btn-primary mx-1" onClick={toFUCase}>First letter uppercase</button>
-        <button className="btn btn-primary mx-1" onClick={speak}>voice assistant</button>
+        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+          Convert to uppercase
+        </button>
+        <button className="btn btn-primary mx-1" onClick={toLoClick}>
+          Convert to uppercase
+        </button>
+        <button className="btn btn-primary mx-1" onClick={toFUCase}>
+          First letter uppercase
+        </button>
+        <button className="btn btn-primary mx-1 mt-1" onClick={speak}>
+          voice assistant
+        </button>
       </div>
       <div className="container my-3">
         <h3>Your Text Summary</h3>
-        <p> {text.split(" ").length} words and {text.length} characters</p>
+        <p>
+          {" "}
+          {text.split(" ").length} words and {text.length} characters
+        </p>
       </div>
-      
 
       <div className="container">
         <h3>Preview</h3>
         <p>{text}</p>
       </div>
-      </>
-  )
+    </>
+  );
 }
