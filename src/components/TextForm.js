@@ -74,7 +74,7 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-1" onClick={toFUCase}>
           First letter uppercase
         </button>
-        <button className="btn btn-primary mx-1 mt-1" onClick={speak}>
+        <button className="btn btn-primary mx-1 mt-2" onClick={speak}>
           voice assistant
         </button>
       </div>
